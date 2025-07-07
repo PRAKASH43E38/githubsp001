@@ -1,19 +1,20 @@
-from pyttsx3 import *
-import google.generativeai as genai
+import math
+import os
+import random
+import re
+import sys
 
-API_KEY = "AIzaSyDFy90NKeI5LElP-m6ko9-aYUcropLuWHY"
-genai.configure(api_key=API_KEY)
 
-model = genai.GenerativeModel("gemini-2.0-flash")
 
-chat = model.start_chat()
+if __name__ == '__main__':
+    n = int(input("Enter a number:").strip())
 
-print("Chat with gemini type 'EXIT' to quit")
-while True:
-    user_input = input("You:")
-    if user_input.lower() == 'EXIT':
-        break
-    response = chat.send_message(user_input)
-    
-    print("GEMINI:",response.text)
-    speak(f"{response.text}")
+    if n%2!=0:
+        print("Weird")
+    else:
+        if 2 <= n <= 5:
+            print("not weird")
+        elif 6 <= n <= 20:
+            print("Weird")
+        elif n > 20:
+            print("Not Weird")
