@@ -1,0 +1,19 @@
+from pyttsx3 import *
+import google.generativeai as genai
+
+API_KEY = "AIzaSyDFy90NKeI5LElP-m6ko9-aYUcropLuWHY"
+genai.configure(api_key=API_KEY)
+
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+chat = model.start_chat()
+
+print("Chat with gemini type 'EXIT' to quit")
+while True:
+    user_input = input("You:")
+    if user_input.lower() == 'EXIT':
+        break
+    response = chat.send_message(user_input)
+    
+    print("GEMINI:",response.text)
+    speak(f"{response.text}")
